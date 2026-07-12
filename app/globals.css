@@ -1,0 +1,211 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+@custom-variant dark (&:is(.dark *));
+
+/*
+  Tailwind v4 defaults borders to currentColor. Keep the v3-style neutral border
+  as a compatibility default so nothing renders with unexpected colored borders.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--archive-border, currentColor);
+  }
+}
+
+:root {
+  /* Sugar-high (blog syntax highlight) */
+  --sh-class: #7aa2f7;
+  --sh-sign: #89ddff;
+  --sh-string: #9ece6a;
+  --sh-keyword: #bb9af7;
+  --sh-comment: #565f89;
+  --sh-jsxliterals: #7aa2f7;
+  --sh-property: #73daca;
+  --sh-entity: #e0af68;
+
+  /* Warm editorial palette — light mode */
+  --archive-bg: #faf8f3;
+  --archive-text: #1f1b16;
+  --archive-muted: #6b5e4e;
+  --archive-border: #e8e1d3;
+  --archive-hover: #f2eddf;
+}
+
+.dark {
+  --archive-bg: #1c1815;
+  --archive-text: #f5efe3;
+  --archive-muted: #948474;
+  --archive-border: #2e2822;
+  --archive-hover: #26221d;
+}
+
+@theme inline {
+  --font-fraunces: var(--font-fraunces);
+  --font-geist: var(--font-geist);
+  --font-geist-mono: var(--font-geist-mono);
+
+  --color-archive-bg: var(--archive-bg);
+  --color-archive-text: var(--archive-text);
+  --color-archive-muted: var(--archive-muted);
+  --color-archive-border: var(--archive-border);
+  --color-archive-hover: var(--archive-hover);
+}
+
+@layer base {
+  html {
+    font-feature-settings: 'kern', 'liga', 'calt', 'ss01';
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body.archive-body {
+    background-color: var(--archive-bg);
+    color: var(--archive-text);
+    font-family: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.65;
+    transition: background-color 200ms ease, color 200ms ease;
+  }
+
+  ::selection {
+    background-color: var(--archive-hover);
+    color: var(--archive-text);
+  }
+}
+
+/* Utilities specific to the archive layout. */
+@layer utilities {
+  .font-fraunces {
+    font-family: var(--font-fraunces), 'Georgia', 'Times New Roman', serif;
+    font-optical-sizing: auto;
+  }
+
+  .font-geist {
+    font-family: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  }
+
+  .font-geist-mono {
+    font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo,
+      monospace;
+  }
+
+  /* Meta line — dates, categories, entry ids */
+  .meta-line {
+    font-family: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--archive-muted);
+  }
+
+  /* Hero H1 — massive on desktop, fluid down. Fraunces opsz shines here. */
+  .hero-h1 {
+    font-family: var(--font-fraunces), 'Georgia', serif;
+    font-optical-sizing: auto;
+    font-variation-settings: 'opsz' 144;
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.02;
+    color: var(--archive-text);
+  }
+
+  /* Section headers (Fraunces ~40px desktop) */
+  .section-h {
+    font-family: var(--font-fraunces), 'Georgia', serif;
+    font-optical-sizing: auto;
+    font-variation-settings: 'opsz' 72;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    line-height: 1.15;
+    color: var(--archive-text);
+  }
+
+  /* Body reading — Fraunces has warmth for prose */
+  .prose-body {
+    font-family: var(--font-fraunces), 'Georgia', serif;
+    font-optical-sizing: auto;
+    font-size: 1rem;
+    line-height: 1.65;
+    font-weight: 400;
+    color: var(--archive-text);
+  }
+
+  /* Big stat numeral */
+  .stat-number {
+    font-family: var(--font-fraunces), 'Georgia', serif;
+    font-optical-sizing: auto;
+    font-variation-settings: 'opsz' 96;
+    font-size: clamp(2rem, 4.2vw, 3rem);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: var(--archive-text);
+  }
+
+  /* Thread number — chapter marker glyph */
+  .thread-number {
+    font-family: var(--font-fraunces), 'Georgia', serif;
+    font-optical-sizing: auto;
+    font-variation-settings: 'opsz' 96;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    color: var(--archive-muted);
+  }
+
+  /* Thread title — a step down from section-h to sit inline with a big number */
+  .thread-title {
+    font-family: var(--font-fraunces), 'Georgia', serif;
+    font-optical-sizing: auto;
+    font-variation-settings: 'opsz' 72;
+    font-size: clamp(1.5rem, 2.6vw, 2.125rem);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    line-height: 1.15;
+    color: var(--archive-text);
+  }
+
+  /* Horizontal shelf: edge fade masks on both sides. */
+  .shelf-fade {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      #000 60px,
+      #000 calc(100% - 60px),
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      #000 60px,
+      #000 calc(100% - 60px),
+      transparent 100%
+    );
+  }
+
+  /* Horizontal snap track. Native scroll + snap for reliability. */
+  .shelf-track {
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    overscroll-behavior-x: contain;
+  }
+
+  .shelf-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .shelf-snap {
+    scroll-snap-align: start;
+  }
+}
