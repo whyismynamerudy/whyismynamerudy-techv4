@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { Geist, Geist_Mono, Fraunces } from 'next/font/google'
+import { Geist, Geist_Mono, Fraunces, Instrument_Serif } from 'next/font/google'
 import './globals.css'
 import { Header } from './header'
 import { Footer } from './footer'
@@ -21,7 +21,94 @@ export const metadata: Metadata = {
     template: '%s | Rudy Monga',
   },
   description:
-    "The archive of everything I've built, contributed to, and shipped. CTO of VantEdge. Host of Not A Minimum Viable Podcast.",
+    "Rudy Monga — Co-Founder & CTO of VantEdge, building autonomous agents for the physical economy. Host of Not A Minimum Viable Podcast. Guinness World Record holder. Toronto.",
+  openGraph: {
+    type: 'website',
+    url: 'https://whyismynamerudy.tech',
+    title: 'Rudy Monga — Building things that compound.',
+    description:
+      "Co-Founder & CTO of VantEdge. Host of Not A Minimum Viable Podcast.",
+    siteName: 'Rudy Monga',
+    images: [{ url: '/rudy-portrait.jpg', width: 1600, height: 2400, alt: 'Rudy Monga' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Rudy Monga — Building things that compound.',
+    description:
+      "Co-Founder & CTO of VantEdge. Host of Not A Minimum Viable Podcast.",
+    images: ['/rudy-portrait.jpg'],
+  },
+  authors: [{ name: 'Rudraksh Monga', url: 'https://whyismynamerudy.tech' }],
+  creator: 'Rudraksh Monga',
+}
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': 'https://whyismynamerudy.tech/#person',
+      name: 'Rudraksh Monga',
+      alternateName: ['Rudy Monga', 'whyismynamerudy'],
+      url: 'https://whyismynamerudy.tech',
+      image: 'https://whyismynamerudy.tech/rudy-portrait.jpg',
+      jobTitle: 'Co-Founder & CTO',
+      description:
+        'Co-Founder & CTO of VantEdge, building autonomous agents for the physical economy. Host of Not A Minimum Viable Podcast.',
+      worksFor: { '@id': 'https://vantedge.run/#organization' },
+      alumniOf: {
+        '@type': 'CollegeOrUniversity',
+        name: 'University of Toronto',
+        url: 'https://www.utoronto.ca',
+      },
+      knowsAbout: [
+        'Autonomous AI agents',
+        'Applied artificial intelligence',
+        'Large language model agents',
+        'Machine learning',
+        'AI for the physical economy',
+      ],
+      award: 'Guinness World Record',
+      homeLocation: {
+        '@type': 'Place',
+        name: 'Toronto, Canada',
+      },
+      sameAs: [
+        'https://www.linkedin.com/in/rudraksh-monga/',
+        'https://github.com/whyismynamerudy',
+        'https://open.spotify.com/show/0K7lN9di3ZXjZHGYEpXnUM',
+        'https://www.youtube.com/@NotAMinimumViablePodcast',
+      ],
+    },
+    {
+      '@type': 'Organization',
+      '@id': 'https://vantedge.run/#organization',
+      name: 'VantEdge',
+      url: 'https://vantedge.run',
+      description:
+        'Autonomous agents for the physical economy. University of Toronto AI/ML spinout.',
+      founder: { '@id': 'https://whyismynamerudy.tech/#person' },
+    },
+    {
+      '@type': 'PodcastSeries',
+      '@id': 'https://whyismynamerudy.tech/#podcast',
+      name: 'Not A Minimum Viable Podcast',
+      alternateName: 'Not A MVP',
+      description:
+        'Conversations with people building things that compound. Host Rudy Monga sits down with operators for the behind-the-scenes of how tech companies actually get built, scaled, and sold.',
+      url: 'https://open.spotify.com/show/0K7lN9di3ZXjZHGYEpXnUM',
+      author: { '@id': 'https://whyismynamerudy.tech/#person' },
+      inLanguage: 'en',
+    },
+    {
+      '@type': 'WebSite',
+      '@id': 'https://whyismynamerudy.tech/#website',
+      name: 'Rudy Monga',
+      url: 'https://whyismynamerudy.tech',
+      author: { '@id': 'https://whyismynamerudy.tech/#person' },
+      inLanguage: 'en',
+    },
+  ],
 }
 
 const geist = Geist({
@@ -46,6 +133,14 @@ const fraunces = Fraunces({
   display: 'swap',
 })
 
+const instrumentSerif = Instrument_Serif({
+  variable: '--font-instrument-serif',
+  subsets: ['latin'],
+  weight: '400',
+  style: ['normal', 'italic'],
+  display: 'swap',
+})
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -53,8 +148,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body
-        className={`${geist.variable} ${geistMono.variable} ${fraunces.variable} archive-body antialiased`}
+        className={`${geist.variable} ${geistMono.variable} ${fraunces.variable} ${instrumentSerif.variable} archive-body antialiased`}
       >
         <ThemeProvider
           enableSystem={true}

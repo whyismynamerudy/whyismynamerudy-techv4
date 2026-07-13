@@ -326,7 +326,7 @@ export const COMPANY: FlagshipEntry = {
   role: 'Co-Founder & CTO',
   dateRange: '2025 → present',
   description:
-    'Autonomous agents for the physical economy. UofT AI/ML spinout with three PhD co-founders. Currently: Anderson BOM demo, Ray and Teknion POCs in flight, Atlas rebuild on OpenAI Agents SDK.',
+    'Autonomous agents for the physical economy. UofT AI/ML spinout with three PhD co-founders.',
   links: [{ label: 'vantedge.run', url: 'https://vantedge.run' }],
 }
 
@@ -370,14 +370,14 @@ export const NOTABLE_SHIPS: Card[] = [
 /* ------------------------------------------------------------------ */
 
 export const NOW_STATEMENT =
-  "I like to make things. Currently: building autonomous agents for the physical economy at VantEdge, with the Anderson BOM demo shipping and POCs with Ray and Teknion in flight. Recording Season 2 of Not A Minimum Viable Podcast — topically-focused conversations with operators I'd learn from anyway. Considering a Substack. Toronto."
+  "I like to make things. Currently: building autonomous agents for the physical economy at VantEdge. Recording Season 2 of Not A Minimum Viable Podcast — topically-focused conversations with operators I'd learn from anyway. Considering a Substack. Toronto."
 
 /** Split forms of NOW_STATEMENT used by the Now section layout. The lead
  *  hangs off the left edge as a large Fraunces pull-quote; the body is the
  *  remaining paragraph that sits under the section header on the right. */
 export const NOW_LEAD = 'I like to make things.'
 export const NOW_BODY =
-  "Currently: building autonomous agents for the physical economy at VantEdge, with the Anderson BOM demo shipping and POCs with Ray and Teknion in flight. Recording Season 2 of Not A Minimum Viable Podcast — topically-focused conversations with operators I'd learn from anyway. Considering a Substack. Toronto."
+  "Currently: building autonomous agents for the physical economy at VantEdge. Recording Season 2 of Not A Minimum Viable Podcast — topically-focused conversations with operators I'd learn from anyway. Considering a Substack. Toronto."
 
 /* ------------------------------------------------------------------ */
 /* FOLLOW — LinkedIn foregrounded, everything else secondary          */
@@ -392,6 +392,7 @@ export const FOLLOW_LINKS: { label: string; href: string }[] = [
   },
   { label: 'GitHub', href: 'https://github.com/whyismynamerudy' },
   { label: 'VantEdge', href: 'https://vantedge.run' },
+  { label: 'Notes', href: '/notes' },
 ]
 
 export const FOLLOW_INTRO =

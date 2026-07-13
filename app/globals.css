@@ -64,6 +64,9 @@
   }
 
   body.archive-body {
+    /* One-line font toggle. Swap to var(--font-instrument-serif) to try Instrument Serif. */
+    --font-display: var(--font-fraunces);
+
     background-color: var(--archive-bg);
     color: var(--archive-text);
     font-family: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
@@ -82,7 +85,7 @@
 /* Utilities specific to the archive layout. */
 @layer utilities {
   .font-fraunces {
-    font-family: var(--font-fraunces), 'Georgia', 'Times New Roman', serif;
+    font-family: var(--font-display), 'Georgia', 'Times New Roman', serif;
     font-optical-sizing: auto;
   }
 
@@ -107,7 +110,7 @@
 
   /* Hero H1 — massive on desktop, fluid down. Fraunces opsz shines here. */
   .hero-h1 {
-    font-family: var(--font-fraunces), 'Georgia', serif;
+    font-family: var(--font-display), 'Georgia', serif;
     font-optical-sizing: auto;
     font-variation-settings: 'opsz' 144;
     font-size: clamp(3rem, 8vw, 5.5rem);
@@ -119,7 +122,7 @@
 
   /* Section headers (Fraunces ~40px desktop) */
   .section-h {
-    font-family: var(--font-fraunces), 'Georgia', serif;
+    font-family: var(--font-display), 'Georgia', serif;
     font-optical-sizing: auto;
     font-variation-settings: 'opsz' 72;
     font-size: clamp(1.75rem, 3vw, 2.5rem);
@@ -131,7 +134,7 @@
 
   /* Body reading — Fraunces has warmth for prose */
   .prose-body {
-    font-family: var(--font-fraunces), 'Georgia', serif;
+    font-family: var(--font-display), 'Georgia', serif;
     font-optical-sizing: auto;
     font-size: 1rem;
     line-height: 1.65;
@@ -141,7 +144,7 @@
 
   /* Big stat numeral */
   .stat-number {
-    font-family: var(--font-fraunces), 'Georgia', serif;
+    font-family: var(--font-display), 'Georgia', serif;
     font-optical-sizing: auto;
     font-variation-settings: 'opsz' 96;
     font-size: clamp(2rem, 4.2vw, 3rem);
@@ -153,7 +156,7 @@
 
   /* Thread number — chapter marker glyph */
   .thread-number {
-    font-family: var(--font-fraunces), 'Georgia', serif;
+    font-family: var(--font-display), 'Georgia', serif;
     font-optical-sizing: auto;
     font-variation-settings: 'opsz' 96;
     font-size: clamp(2.5rem, 5vw, 3.5rem);
@@ -165,7 +168,7 @@
 
   /* Thread title — a step down from section-h to sit inline with a big number */
   .thread-title {
-    font-family: var(--font-fraunces), 'Georgia', serif;
+    font-family: var(--font-display), 'Georgia', serif;
     font-optical-sizing: auto;
     font-variation-settings: 'opsz' 72;
     font-size: clamp(1.5rem, 2.6vw, 2.125rem);

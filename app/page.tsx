@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import {
   motion,
@@ -182,7 +183,19 @@ function Hero() {
           className="flex flex-col"
         >
           <motion.h1 variants={heroTextLine} className="hero-h1">
-            Building things that compound.
+            Building things that compound
+            <span
+              role="button"
+              aria-hidden="true"
+              onClick={() => {
+                window.open(
+                  'https://youtu.be/dQw4w9WgXcQ?si=NgIaHvJybQUtj-_w',
+                  '_blank',
+                  'noopener,noreferrer',
+                )
+              }}
+              className="cursor-pointer"
+            >.</span>
           </motion.h1>
           <motion.div
             variants={heroTextLine}
@@ -418,30 +431,46 @@ function FollowSection() {
 
           {/* Secondary row — compact, dot-separated. Skips LinkedIn (primary). */}
           <div className="mb-6 flex flex-wrap items-center gap-x-3 gap-y-2 font-geist text-[13px] text-[color:var(--archive-muted)]">
-            {secondary.map((link, i) => (
-              <span
-                key={link.href}
-                className="inline-flex items-center gap-3"
-              >
-                <a
-                  href={link.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-1 transition-colors duration-200 hover:text-[color:var(--archive-text)]"
-                >
+            {secondary.map((link, i) => {
+              const isInternal = link.href.startsWith('/')
+              const linkClass =
+                'inline-flex items-center gap-1 transition-colors duration-200 hover:text-[color:var(--archive-text)]'
+              const inner = (
+                <>
                   {link.label}
                   <ArrowUpRight className="h-3 w-3" />
-                </a>
-                {i < secondary.length - 1 && (
-                  <span
-                    aria-hidden
-                    className="text-[color:var(--archive-border)]"
-                  >
-                    ·
-                  </span>
-                )}
-              </span>
-            ))}
+                </>
+              )
+              return (
+                <span
+                  key={link.href}
+                  className="inline-flex items-center gap-3"
+                >
+                  {isInternal ? (
+                    <Link href={link.href} className={linkClass}>
+                      {inner}
+                    </Link>
+                  ) : (
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className={linkClass}
+                    >
+                      {inner}
+                    </a>
+                  )}
+                  {i < secondary.length - 1 && (
+                    <span
+                      aria-hidden
+                      className="text-[color:var(--archive-border)]"
+                    >
+                      ·
+                    </span>
+                  )}
+                </span>
+              )
+            })}
           </div>
 
         </div>

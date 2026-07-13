@@ -114,7 +114,7 @@ export function Card({
 }) {
   const isShelf = layout === 'shelf'
   const sizingClasses = isShelf
-    ? 'shelf-snap h-64 w-[260px] shrink-0 sm:w-[280px]'
+    ? 'shelf-snap h-[19rem] w-[260px] shrink-0 sm:h-72 sm:w-[280px]'
     : 'h-full w-full min-h-[16rem]'
 
   return (
@@ -130,7 +130,7 @@ export function Card({
       className={`group relative flex ${sizingClasses} flex-col overflow-hidden rounded-lg border border-[color:var(--archive-border)] bg-[color:var(--archive-bg)] p-5 shadow-none transition-all duration-200 hover:-translate-y-[1px] hover:scale-[1.015] hover:border-[color:var(--archive-muted)] hover:shadow-[0_6px_20px_-8px_rgba(31,27,22,0.15)]`}
     >
       {card.eyebrow && (
-        <div className="meta-line text-[10.5px]">{card.eyebrow}</div>
+        <div className="meta-line line-clamp-2 text-[10.5px]">{card.eyebrow}</div>
       )}
 
       <h4 className="mt-2 font-fraunces text-[1.125rem] font-medium leading-snug tracking-tight text-[color:var(--archive-text)] sm:text-[1.1875rem]">
@@ -139,18 +139,8 @@ export function Card({
 
       <p
         className={`prose-body mt-2 text-[13.5px] leading-[1.5] text-[color:var(--archive-muted)] ${
-          isShelf ? '' : 'sm:text-[14px]'
+          isShelf ? 'line-clamp-3' : 'sm:text-[14px]'
         }`}
-        style={
-          isShelf
-            ? {
-                display: '-webkit-box',
-                WebkitBoxOrient: 'vertical',
-                WebkitLineClamp: 3,
-                overflow: 'hidden',
-              }
-            : undefined
-        }
       >
         {card.hook}
       </p>
