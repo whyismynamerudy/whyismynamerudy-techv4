@@ -326,7 +326,7 @@ export const COMPANY: FlagshipEntry = {
   role: 'Co-Founder & CTO',
   dateRange: '2025 → present',
   description:
-    'Autonomous agents for the physical economy. UofT AI/ML spinout with three PhD co-founders.',
+    'Autonomous agents for the physical economy. UofT AI/ML spinout with PhD and Prof.',
   links: [{ label: 'vantedge.run', url: 'https://vantedge.run' }],
 }
 
