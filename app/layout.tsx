@@ -21,13 +21,13 @@ export const metadata: Metadata = {
     template: '%s | Rudy Monga',
   },
   description:
-    "Rudy Monga — Co-Founder & CTO of VantEdge, building autonomous agents for the physical economy. Host of Not A Minimum Viable Podcast. Guinness World Record holder. Toronto.",
+    "Rudy Monga — Senior full-stack engineer at Stan, building for YouTube creators. Co-Founder & CTO of VantEdge, the platform for building AI-native internal applications. Host of Not A Minimum Viable Podcast. Guinness World Record holder. Toronto.",
   openGraph: {
     type: 'website',
     url: 'https://whyismynamerudy.tech',
     title: 'Rudy Monga — Building things that compound.',
     description:
-      "Co-Founder & CTO of VantEdge. Host of Not A Minimum Viable Podcast.",
+      "Senior @ Stan. Co-Founder & CTO @ VantEdge. Host of Not A Minimum Viable Podcast.",
     siteName: 'Rudy Monga',
     images: [{ url: '/rudy-portrait.jpg', width: 1600, height: 2400, alt: 'Rudy Monga' }],
   },
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Rudy Monga — Building things that compound.',
     description:
-      "Co-Founder & CTO of VantEdge. Host of Not A Minimum Viable Podcast.",
+      "Senior @ Stan. Co-Founder & CTO @ VantEdge. Host of Not A Minimum Viable Podcast.",
     images: ['/rudy-portrait.jpg'],
   },
   authors: [{ name: 'Rudraksh Monga', url: 'https://whyismynamerudy.tech' }],
@@ -52,10 +52,13 @@ const jsonLd = {
       alternateName: ['Rudy Monga', 'whyismynamerudy'],
       url: 'https://whyismynamerudy.tech',
       image: 'https://whyismynamerudy.tech/rudy-portrait.jpg',
-      jobTitle: 'Co-Founder & CTO',
+      jobTitle: 'Senior Full-Stack Software Engineer',
       description:
-        'Co-Founder & CTO of VantEdge, building autonomous agents for the physical economy. Host of Not A Minimum Viable Podcast.',
-      worksFor: { '@id': 'https://vantedge.run/#organization' },
+        'Senior full-stack engineer at Stan, building for YouTube creators. Co-Founder & CTO of VantEdge, the platform for building AI-native internal applications. Host of Not A Minimum Viable Podcast.',
+      worksFor: [
+        { '@type': 'Organization', name: 'Stan', url: 'https://stan.store' },
+        { '@id': 'https://vantedge.run/#organization' },
+      ],
       alumniOf: {
         '@type': 'CollegeOrUniversity',
         name: 'University of Toronto',
@@ -76,7 +79,7 @@ const jsonLd = {
       sameAs: [
         'https://www.linkedin.com/in/rudraksh-monga/',
         'https://github.com/whyismynamerudy',
-        'https://open.spotify.com/show/0K7lN9di3ZXjZHGYEpXnUM',
+        'https://whyismynamerudy.substack.com/',
         'https://www.youtube.com/@NotAMinimumViablePodcast',
       ],
     },
@@ -86,7 +89,7 @@ const jsonLd = {
       name: 'VantEdge',
       url: 'https://vantedge.run',
       description:
-        'Autonomous agents for the physical economy. University of Toronto AI/ML spinout.',
+        'The platform for building AI-native internal applications. University of Toronto AI/ML spinout.',
       founder: { '@id': 'https://whyismynamerudy.tech/#person' },
     },
     {
@@ -96,7 +99,7 @@ const jsonLd = {
       alternateName: 'Not A MVP',
       description:
         'Conversations with people building things that compound. Host Rudy Monga sits down with operators for the behind-the-scenes of how tech companies actually get built, scaled, and sold.',
-      url: 'https://open.spotify.com/show/0K7lN9di3ZXjZHGYEpXnUM',
+      url: 'https://www.youtube.com/@NotAMinimumViablePodcast',
       author: { '@id': 'https://whyismynamerudy.tech/#person' },
       inLanguage: 'en',
     },

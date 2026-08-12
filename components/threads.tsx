@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { motion } from 'motion/react'
-import { ArrowUpRight, ChevronRight } from 'lucide-react'
+import { ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react'
 import type {
   Card as CardData,
   FlagshipEntry as FlagshipEntryData,
@@ -183,6 +183,7 @@ export function LibraryShelf({
   cards: CardData[]
 }) {
   const trackRef = useRef<HTMLDivElement | null>(null)
+  const [atStart, setAtStart] = useState(true)
   const [atEnd, setAtEnd] = useState(false)
   const [scrollable, setScrollable] = useState(false)
 
@@ -191,8 +192,14 @@ export function LibraryShelf({
     if (!el) return
     const maxScroll = el.scrollWidth - el.clientWidth
     const canScroll = maxScroll > 4
+    // Threshold of 56 covers the shelf-track's horizontal padding (up to 48px
+    // on lg breakpoints) plus a few pixels of tolerance for browser scroll-snap
+    // auto-alignment. Without this, snap-mandatory would auto-scroll to card
+    // 1's snap position and read as "not at start".
+    const EDGE = 56
     setScrollable(canScroll)
-    setAtEnd(!canScroll || el.scrollLeft >= maxScroll - 4)
+    setAtStart(el.scrollLeft <= EDGE)
+    setAtEnd(!canScroll || el.scrollLeft >= maxScroll - EDGE)
   }, [])
 
   useEffect(() => {
@@ -235,7 +242,13 @@ export function LibraryShelf({
       {/* Shelf: negative-margin to bleed slightly past the container so the
           edge fade doesn't clip the first card visually. */}
       <div className="relative -mx-5 sm:-mx-8 lg:-mx-12">
-        <div className="shelf-fade">
+        <div
+          className="shelf-fade transition-[--shelf-fade-left,--shelf-fade-right] duration-300 ease-out"
+          style={{
+            ['--shelf-fade-left' as string]: atStart ? '0px' : '60px',
+            ['--shelf-fade-right' as string]: atEnd ? '0px' : '60px',
+          }}
+        >
           <div
             ref={trackRef}
             tabIndex={0}
@@ -253,18 +266,39 @@ export function LibraryShelf({
           </div>
         </div>
 
-        {/* Right chevron indicator — fades out when the shelf is at end. */}
-        <motion.div
-          aria-hidden
+        {/* Left chevron button — hidden at start of shelf. */}
+        <motion.button
+          type="button"
+          aria-label="Scroll left"
+          onClick={() => advance(-1)}
+          initial={false}
+          animate={{ opacity: scrollable && !atStart ? 1 : 0 }}
+          transition={{ duration: 0.2, ease: EASE }}
+          className={`absolute top-1/2 left-2 -translate-y-1/2 sm:left-4 lg:left-6 ${
+            scrollable && !atStart ? '' : 'pointer-events-none'
+          }`}
+        >
+          <div className="flex h-9 w-9 items-center justify-center rounded-full border border-[color:var(--archive-border)] bg-[color:var(--archive-bg)] text-[color:var(--archive-muted)] shadow-[0_2px_8px_-2px_rgba(31,27,22,0.1)] transition-all duration-200 hover:scale-105 hover:border-[color:var(--archive-text)] hover:text-[color:var(--archive-text)]">
+            <ChevronLeft className="h-4 w-4" />
+          </div>
+        </motion.button>
+
+        {/* Right chevron button — hidden at end of shelf. */}
+        <motion.button
+          type="button"
+          aria-label="Scroll right"
+          onClick={() => advance(1)}
           initial={false}
           animate={{ opacity: scrollable && !atEnd ? 1 : 0 }}
           transition={{ duration: 0.2, ease: EASE }}
-          className="pointer-events-none absolute top-1/2 right-2 -translate-y-1/2 sm:right-4 lg:right-6"
+          className={`absolute top-1/2 right-2 -translate-y-1/2 sm:right-4 lg:right-6 ${
+            scrollable && !atEnd ? '' : 'pointer-events-none'
+          }`}
         >
-          <div className="flex h-8 w-8 items-center justify-center rounded-full border border-[color:var(--archive-border)] bg-[color:var(--archive-bg)] text-[color:var(--archive-muted)] shadow-[0_2px_8px_-2px_rgba(31,27,22,0.1)]">
+          <div className="flex h-9 w-9 items-center justify-center rounded-full border border-[color:var(--archive-border)] bg-[color:var(--archive-bg)] text-[color:var(--archive-muted)] shadow-[0_2px_8px_-2px_rgba(31,27,22,0.1)] transition-all duration-200 hover:scale-105 hover:border-[color:var(--archive-text)] hover:text-[color:var(--archive-text)]">
             <ChevronRight className="h-4 w-4" />
           </div>
-        </motion.div>
+        </motion.button>
       </div>
     </div>
   )

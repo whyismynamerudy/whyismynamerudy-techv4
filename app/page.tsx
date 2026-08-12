@@ -12,7 +12,8 @@ import {
 } from 'motion/react'
 import { ArrowUpRight } from 'lucide-react'
 import {
-  COMPANY,
+  CAREER_CURRENT,
+  CAREER_PREVIOUS,
   FOLLOW_INTRO,
   FOLLOW_LINKS,
   HERO,
@@ -22,11 +23,12 @@ import {
   NOW_BODY,
   NOW_LEAD,
   SHOW,
+  type CareerEntry,
 } from './data'
 import {
   Card,
-  FlagshipEntry,
   LibraryShelf,
+  LinkRow,
 } from '@/components/threads'
 
 /* ------------------------------------------------------------------ */
@@ -321,22 +323,91 @@ function ShowSection() {
 }
 
 /* ------------------------------------------------------------------ */
-/* The Company — VantEdge flagship                                    */
+/* The Work — unified career section                                  */
 /* ------------------------------------------------------------------ */
 
-function CompanySection() {
+function CurrentEntry({ entry, index }: { entry: CareerEntry; index: number }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-40px' }}
+      transition={{ duration: 0.6, ease: EASE, delay: 0.05 + index * 0.08 }}
+    >
+      <h3 className="font-fraunces text-[clamp(1.75rem,3.2vw,2.5rem)] font-medium leading-tight tracking-tight text-[color:var(--archive-text)]">
+        {entry.title}
+      </h3>
+      <div className="meta-line mt-2">
+        {entry.role} · {entry.dateRange}
+      </div>
+      <p className="prose-body mt-4 max-w-[40rem] text-[1.0625rem] leading-[1.7] text-[color:var(--archive-text)]">
+        {entry.description}
+      </p>
+      {entry.links && entry.links.length > 0 && (
+        <LinkRow links={entry.links} className="mt-5" />
+      )}
+    </motion.div>
+  )
+}
+
+function PreviousEntry({ entry, index }: { entry: CareerEntry; index: number }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-40px' }}
+      transition={{ duration: 0.5, ease: EASE, delay: 0.03 + index * 0.05 }}
+      className="grid grid-cols-1 gap-x-6 gap-y-1 sm:grid-cols-[minmax(0,220px)_minmax(0,1fr)]"
+    >
+      <div>
+        <div className="font-fraunces text-[1.0625rem] font-medium leading-snug text-[color:var(--archive-text)]">
+          {entry.title}
+        </div>
+        <div className="meta-line mt-1 text-[10.5px]">{entry.dateRange}</div>
+      </div>
+      <div className="flex flex-col gap-1 pt-0.5 sm:pt-1">
+        <div className="font-geist text-[13px] font-medium text-[color:var(--archive-text)]">
+          {entry.role}
+        </div>
+        <p className="prose-body text-[13.5px] leading-[1.55] text-[color:var(--archive-muted)]">
+          {entry.description}
+        </p>
+      </div>
+    </motion.div>
+  )
+}
+
+function WorkSection() {
   return (
     <section className="grid grid-cols-1 items-start gap-8 md:grid-cols-[minmax(0,1fr)_minmax(0,240px)] md:gap-16 lg:gap-24">
-      {/* Mobile order: header block first. Desktop order: header block on the
-          right via md:order-2; FlagshipEntry pulled left via md:order-1. */}
       <div className="flex flex-col gap-4 md:order-2">
-        <SectionHeader>The Company.</SectionHeader>
+        <SectionHeader>The Work.</SectionHeader>
         <div className="meta-line text-[10.5px] text-[color:var(--archive-muted)]">
-          {COMPANY.dateRange}
+          2020 → present
         </div>
       </div>
-      <div className="md:order-1">
-        <FlagshipEntry entry={COMPANY} />
+
+      <div className="flex flex-col gap-14 md:order-1">
+        {/* Current — full flagship treatment for each */}
+        <div className="flex flex-col gap-12">
+          {CAREER_CURRENT.map((entry, i) => (
+            <CurrentEntry key={entry.title} entry={entry} index={i} />
+          ))}
+        </div>
+
+        {/* Previously — compact list */}
+        {CAREER_PREVIOUS.length > 0 && (
+          <div className="flex flex-col gap-6 border-t border-[color:var(--archive-border)] pt-8">
+            <div className="meta-line text-[10.5px] text-[color:var(--archive-muted)]">
+              Previously
+            </div>
+            <div className="flex flex-col gap-5">
+              {CAREER_PREVIOUS.map((entry, i) => (
+                <PreviousEntry key={entry.title} entry={entry} index={i} />
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </section>
   )
@@ -522,7 +593,7 @@ export default function Home() {
       {/* Editorial two-column section stack */}
       <div className="flex flex-col gap-24 pt-24 sm:gap-28 sm:pt-28 lg:gap-32 lg:pt-32">
         <ShowSection />
-        <CompanySection />
+        <WorkSection />
         <NotableShipsSection />
         <NowSection />
         <FollowSection />

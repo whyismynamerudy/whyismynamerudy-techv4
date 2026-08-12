@@ -178,22 +178,27 @@
     color: var(--archive-text);
   }
 
-  /* Horizontal shelf: edge fade masks on both sides. */
+  /* Horizontal shelf: edge fade masks that dynamically retract when the
+     shelf is at the start or end. CSS variables set via inline style from
+     the component. Default (no vars set) matches the mid-scroll behavior
+     so it degrades gracefully. */
   .shelf-fade {
     -webkit-mask-image: linear-gradient(
       to right,
       transparent 0,
-      #000 60px,
-      #000 calc(100% - 60px),
+      #000 var(--shelf-fade-left, 60px),
+      #000 calc(100% - var(--shelf-fade-right, 60px)),
       transparent 100%
     );
     mask-image: linear-gradient(
       to right,
       transparent 0,
-      #000 60px,
-      #000 calc(100% - 60px),
+      #000 var(--shelf-fade-left, 60px),
+      #000 calc(100% - var(--shelf-fade-right, 60px)),
       transparent 100%
     );
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
   }
 
   /* Horizontal snap track. Native scroll + snap for reliability. */

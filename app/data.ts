@@ -42,13 +42,13 @@ export type FoundationItem = {
 export const HERO = {
   headline: 'Building things that compound.',
   elevator:
-    "I'm CTO of VantEdge, building autonomous agents for the physical economy. I host Not A Minimum Viable Podcast, where I sit down with operators for the behind-the-scenes of how tech companies actually get built, scaled, and sold. Guinness World Record holder. Hip-hop nerd. Toronto.",
+    "Senior full-stack engineer at Stan, taking product ownership of a new build for YouTube creators. Co-Founder & CTO of VantEdge, the platform for building AI-native internal applications. Host of Not A Minimum Viable Podcast, where I sit down with operators for the behind-the-scenes of how tech companies actually get built, scaled, and sold. Guinness World Record holder. Hip-hop nerd. Toronto.",
   portrait: '/rudy-portrait.jpg',
 }
 
 /** Small credential-stack line rendered directly under the H1 in the hero. */
 export const HERO_CREDENTIALS =
-  'CO-FOUNDER & CTO @ VANTEDGE  ·  PREV @ AWS  ·  UOFT ML RESEARCH  ·  TORONTO'
+  'SWE @ STAN  ·  CO-FOUNDER & CTO @ VANTEDGE  ·  PREV @ AWS  ·  TORONTO'
 
 /** Hero stats displayed in the strip below the intro. */
 export type HeroStat = {
@@ -86,13 +86,22 @@ export const SHOW: {
       label: 'Watch on YouTube',
       url: 'https://www.youtube.com/@NotAMinimumViablePodcast',
     },
-    {
-      label: 'Listen on Spotify',
-      url: 'https://open.spotify.com/show/0K7lN9di3ZXjZHGYEpXnUM',
-    },
   ],
-  episodeCountMeta: '17 episodes · Season 2 in progress',
+  episodeCountMeta: '18 episodes · Season 2 in progress',
   cards: [
+    {
+      title: 'Gaurav Verma',
+      eyebrow: 'EP · CMO / MARKETING ENGINEER',
+      hook:
+        "The next $500K role that doesn't exist in most org charts. On why prompt engineers are done and the marketing engineer is coming.",
+      date: 'AUG 2026',
+      links: [
+        {
+          label: 'YouTube',
+          url: 'https://www.youtube.com/@NotAMinimumViablePodcast',
+        },
+      ],
+    },
     {
       title: 'Shawn Gong',
       eyebrow: 'EP · EX-TINDER',
@@ -318,17 +327,69 @@ export const SHOW: {
 }
 
 /* ------------------------------------------------------------------ */
-/* THE COMPANY — VantEdge flagship                                    */
+/* THE WORK — unified career section                                  */
 /* ------------------------------------------------------------------ */
 
-export const COMPANY: FlagshipEntry = {
-  title: 'VantEdge',
-  role: 'Co-Founder & CTO',
-  dateRange: '2025 → present',
-  description:
-    'Autonomous agents for the physical economy. UofT AI/ML spinout with PhD and Prof.',
-  links: [{ label: 'vantedge.run', url: 'https://vantedge.run' }],
+export type CareerEntry = {
+  title: string
+  role: string
+  dateRange: string
+  description: string
+  links?: ThreadLink[]
 }
+
+/** Reverse-chronological career. First two entries render prominently as
+ *  current work; subsequent entries render as a compact "Previously" list. */
+export const CAREER_CURRENT: CareerEntry[] = [
+  {
+    title: 'Stan',
+    role: 'Senior Full-Stack Software Engineer',
+    dateRange: 'Aug 2026 → present',
+    description:
+      'Taking product ownership of a new build for YouTube creators. Shipping in public.',
+    links: [{ label: 'stan.store', url: 'https://stan.store' }],
+  },
+  {
+    title: 'VantEdge',
+    role: 'Co-Founder & CTO',
+    dateRange: '2025 → present',
+    description:
+      'The platform for building AI-native internal applications. UofT AI/ML spinout.',
+    links: [{ label: 'vantedge.run', url: 'https://vantedge.run' }],
+  },
+]
+
+export const CAREER_PREVIOUS: CareerEntry[] = [
+  {
+    title: 'Amazon Web Services',
+    role: 'Software Engineer Intern',
+    dateRange: 'May–Aug 2025',
+    description: 'Anomaly detection.',
+  },
+  {
+    title: 'Intact Insurance',
+    role: 'Infrastructure Operations',
+    dateRange: '2023–2024',
+    description:
+      '150% parallel build capacity. 97% release cycle acceleration.',
+  },
+  {
+    title: 'University of Toronto',
+    role: 'ML Research (Prof. Ashton Anderson)',
+    dateRange: '2022–2024',
+    description: 'RAG for knowledge-graph query answering.',
+  },
+  {
+    title: 'Speech Classification Paper',
+    role: 'Published Research',
+    dateRange: 'April 2020',
+    description:
+      'Particle Swarm Optimization applied to speech classification.',
+  },
+]
+
+/** Retained for backwards compat if any external ref lingers. */
+export const COMPANY: FlagshipEntry = CAREER_CURRENT[1] as FlagshipEntry
 
 /* ------------------------------------------------------------------ */
 /* NOTABLE SHIPS — past standouts (2 items, 2-col grid)               */
@@ -370,14 +431,14 @@ export const NOTABLE_SHIPS: Card[] = [
 /* ------------------------------------------------------------------ */
 
 export const NOW_STATEMENT =
-  "I like to make things. Currently: building autonomous agents for the physical economy at VantEdge. Recording Season 2 of Not A Minimum Viable Podcast — topically-focused conversations with operators I'd learn from anyway. Considering a Substack. Toronto."
+  "I like to make things. Currently: senior at Stan owning a new build for YouTube creators. Co-Founder & CTO at VantEdge shipping the platform for building AI-native internal applications. Recording Season 2 of Not A Minimum Viable Podcast — topically-focused conversations with operators I'd learn from anyway. Writing on Substack. Toronto."
 
 /** Split forms of NOW_STATEMENT used by the Now section layout. The lead
  *  hangs off the left edge as a large Fraunces pull-quote; the body is the
  *  remaining paragraph that sits under the section header on the right. */
 export const NOW_LEAD = 'I like to make things.'
 export const NOW_BODY =
-  "Currently: building autonomous agents for the physical economy at VantEdge. Recording Season 2 of Not A Minimum Viable Podcast — topically-focused conversations with operators I'd learn from anyway. Considering a Substack. Toronto."
+  "Currently: senior at Stan owning a new build for YouTube creators. Co-Founder & CTO at VantEdge shipping the platform for building AI-native internal applications. Recording Season 2 of Not A Minimum Viable Podcast — topically-focused conversations with operators I'd learn from anyway. Writing on Substack. Toronto."
 
 /* ------------------------------------------------------------------ */
 /* FOLLOW — LinkedIn foregrounded, everything else secondary          */
@@ -387,15 +448,17 @@ export const NOW_BODY =
 export const FOLLOW_LINKS: { label: string; href: string }[] = [
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/rudraksh-monga/' },
   {
+    label: 'Substack',
+    href: 'https://whyismynamerudy.substack.com/',
+  },
+  {
     label: 'Podcast',
     href: 'https://www.youtube.com/@NotAMinimumViablePodcast',
   },
   { label: 'GitHub', href: 'https://github.com/whyismynamerudy' },
-  { label: 'VantEdge', href: 'https://vantedge.run' },
-  { label: 'Notes', href: '/notes' },
 ]
 
 export const FOLLOW_INTRO =
-  'Following along is the easiest way to see what compounds. New episodes drop on the podcast, new notes go up on LinkedIn, and everything eventually finds its way onto the Substack — once it exists.'
+  'Following along is the easiest way to see what compounds. New episodes drop on the podcast, new notes go up on LinkedIn, and long-form writing lands on the Substack.'
 
 export const CONTACT_EMAIL = 'rudy@vantedge.run'
