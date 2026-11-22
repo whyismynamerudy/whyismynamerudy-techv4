@@ -368,6 +368,12 @@ export const CAREER_PREVIOUS: CareerEntry[] = [
     description: 'Anomaly detection.',
   },
   {
+    title: 'University of Toronto — GPU Profiling',
+    role: 'Software Engineer',
+    dateRange: 'Jan–Apr 2025',
+    description: 'Built tools to find performance bottlenecks in ML training and inference.',
+  },
+  {
     title: 'Intact Insurance',
     role: 'Infrastructure Operations',
     dateRange: '2023–2024',

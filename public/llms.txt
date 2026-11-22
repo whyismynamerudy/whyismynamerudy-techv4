@@ -23,6 +23,7 @@ Full name: Rudraksh (Rudy) Monga. Also known as: whyismynamerudy.
 - VantEdge (2025): Co-Founder & CTO. The platform for building AI-native internal applications. University of Toronto AI/ML spinout.
 
 - Amazon Web Services (May–Aug 2025): Software Engineer Intern, anomaly detection.
+- University of Toronto (Jan–Apr 2025): Software Engineer, GPU Profiling Tools. Built tools to find performance bottlenecks in ML training and inference.
 - Intact Insurance (2023–2024): Infrastructure Operations. Delivered 150% parallel build capacity and 97% release cycle acceleration.
 - University of Toronto (2022–2024): ML research under Prof. Ashton Anderson on RAG for knowledge-graph query answering.
 - Speech Classification Paper (April 2020): Published research applying Particle Swarm Optimization to speech classification.
