@@ -1,4 +1,4 @@
-import { CAREER_CURRENT, CAREER_PREVIOUS, CONTACT_EMAIL, NOTABLE_SHIPS, SHOW } from './data'
+import { CAREER_CURRENT, CAREER_PREVIOUS, NOTABLE_SHIPS, SHOW } from './data'
 
 export default function Home() {
   return (
@@ -41,7 +41,7 @@ export default function Home() {
       </section>
       <section className="elsewhere">
         <h2 className="section-label">Say hello</h2>
-        <p>Find me on <a href="https://github.com/whyismynamerudy">GitHub</a> and <a href="https://www.linkedin.com/in/rudraksh-monga/">LinkedIn</a>, or <a href={`mailto:${CONTACT_EMAIL}`}>send me an email</a>.</p>
+        <p>Find me on <a href="https://github.com/whyismynamerudy">GitHub</a> and <a href="https://www.linkedin.com/in/rudraksh-monga/">LinkedIn</a>.</p>
       </section>
     </div>
   )

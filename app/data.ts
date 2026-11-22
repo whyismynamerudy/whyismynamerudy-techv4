@@ -463,5 +463,3 @@ export const FOLLOW_LINKS: { label: string; href: string }[] = [
 
 export const FOLLOW_INTRO =
   'Following along is the easiest way to see what compounds. New episodes drop on the podcast, and updates go up on LinkedIn.'
-
-export const CONTACT_EMAIL = 'rudy@vantedge.run'
