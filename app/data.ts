@@ -42,7 +42,7 @@ export type FoundationItem = {
 export const HERO = {
   headline: 'Building things that compound.',
   elevator:
-    "Senior full-stack engineer at Stan, taking product ownership of a new build for YouTube creators. Previously Co-Founder & CTO of VantEdge, the platform for building AI-native internal applications. Host of Not A Minimum Viable Podcast, where I sit down with operators for the behind-the-scenes of how tech companies actually get built, scaled, and sold. Guinness World Record holder. Hip-hop nerd. Toronto.",
+    "Senior full-stack engineer at Stan, building Stanley, an AI assistant you can text. Previously Co-Founder & CTO of VantEdge, the platform for building AI-native internal applications. Host of Not A Minimum Viable Podcast, where I sit down with operators for the behind-the-scenes of how tech companies actually get built, scaled, and sold. Guinness World Record holder. Hip-hop nerd. Toronto.",
   portrait: '/rudy-portrait.jpg',
 }
 
@@ -346,7 +346,7 @@ export const CAREER_CURRENT: CareerEntry[] = [
     role: 'Senior Full-Stack Software Engineer',
     dateRange: 'Aug 2026 → present',
     description:
-      'Taking product ownership of a new build for YouTube creators. Shipping in public.',
+      'Building Stanley, an AI assistant that helps creators draft, schedule, and publish social posts through chat. I work on making it something people keep coming back to, and finding ways to make the AI behind it faster and less expensive to run. I also help take new product ideas from early experiments to their first customers.',
     links: [{ label: 'stan.store', url: 'https://stan.store' }],
   },
 
@@ -432,14 +432,14 @@ export const NOTABLE_SHIPS: Card[] = [
 /* ------------------------------------------------------------------ */
 
 export const NOW_STATEMENT =
-  "I like to make things. Currently: senior at Stan owning a new build for YouTube creators. Recording Season 2 of Not A Minimum Viable Podcast — topically-focused conversations with operators I'd learn from anyway. Toronto."
+  "I like to make things. Currently: senior at Stan building Stanley, an AI assistant you can text. Recording Season 2 of Not A Minimum Viable Podcast — topically-focused conversations with operators I'd learn from anyway. Toronto."
 
 /** Split forms of NOW_STATEMENT used by the Now section layout. The lead
  *  hangs off the left edge as a large Fraunces pull-quote; the body is the
  *  remaining paragraph that sits under the section header on the right. */
 export const NOW_LEAD = 'I like to make things.'
 export const NOW_BODY =
-  "Currently: senior at Stan owning a new build for YouTube creators. Recording Season 2 of Not A Minimum Viable Podcast — topically-focused conversations with operators I'd learn from anyway. Toronto."
+  "Currently: senior at Stan building Stanley, an AI assistant you can text. Recording Season 2 of Not A Minimum Viable Podcast — topically-focused conversations with operators I'd learn from anyway. Toronto."
 
 /* ------------------------------------------------------------------ */
 /* FOLLOW — LinkedIn foregrounded, everything else secondary          */

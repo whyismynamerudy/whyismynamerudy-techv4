@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     template: '%s | Rudy Monga',
   },
   description:
-    "Rudy Monga — Senior full-stack engineer at Stan, building for YouTube creators. Previously Co-Founder & CTO of VantEdge, the platform for building AI-native internal applications. Host of Not A Minimum Viable Podcast. Guinness World Record holder. Toronto.",
+    "Rudy Monga — Senior full-stack engineer at Stan, building Stanley, an AI assistant you can text. Previously Co-Founder & CTO of VantEdge, the platform for building AI-native internal applications. Host of Not A Minimum Viable Podcast. Guinness World Record holder. Toronto.",
   openGraph: {
     type: 'website',
     url: 'https://whyismynamerudy.tech',
@@ -52,7 +52,7 @@ const jsonLd = {
       image: 'https://whyismynamerudy.tech/rudy-portrait.jpg',
       jobTitle: 'Senior Full-Stack Software Engineer',
       description:
-        'Senior full-stack engineer at Stan, building for YouTube creators. Previously Co-Founder & CTO of VantEdge, the platform for building AI-native internal applications. Host of Not A Minimum Viable Podcast.',
+        'Senior full-stack engineer at Stan, building Stanley, an AI assistant you can text. Previously Co-Founder & CTO of VantEdge, the platform for building AI-native internal applications. Host of Not A Minimum Viable Podcast.',
       worksFor: [
         { '@type': 'Organization', name: 'Stan', url: 'https://stan.store' },
       ],

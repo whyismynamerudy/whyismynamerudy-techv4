@@ -15,7 +15,7 @@ Full name: Rudraksh (Rudy) Monga. Also known as: whyismynamerudy.
 
 ## Current work
 
-- Stan (Aug 2026 → present): Senior Full-Stack Software Engineer. Taking product ownership of a new build for YouTube creators. Building in public.
+- Stan (Aug 2026 → present): Senior Full-Stack Software Engineer. Building Stanley, an AI assistant that helps creators draft, schedule, and publish social posts through chat. I work on making it something people keep coming back to, and finding ways to make the AI behind it faster and less expensive to run. I also help take new product ideas from early experiments to their first customers.
 - Not A Minimum Viable Podcast (2025 → present): Host and producer. 18 episodes as of August 2026, Season 2 in progress. Topic-focused conversations with post-PMF operators about how tech companies actually get built, scaled, and sold.
 
 ## Past work
