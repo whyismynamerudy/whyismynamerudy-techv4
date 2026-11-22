@@ -42,7 +42,7 @@ export type FoundationItem = {
 export const HERO = {
   headline: 'Building things that compound.',
   elevator:
-    "Senior full-stack engineer at Stan, taking product ownership of a new build for YouTube creators. Co-Founder & CTO of VantEdge, the platform for building AI-native internal applications. Host of Not A Minimum Viable Podcast, where I sit down with operators for the behind-the-scenes of how tech companies actually get built, scaled, and sold. Guinness World Record holder. Hip-hop nerd. Toronto.",
+    "Senior full-stack engineer at Stan, taking product ownership of a new build for YouTube creators. Previously Co-Founder & CTO of VantEdge, the platform for building AI-native internal applications. Host of Not A Minimum Viable Podcast, where I sit down with operators for the behind-the-scenes of how tech companies actually get built, scaled, and sold. Guinness World Record holder. Hip-hop nerd. Toronto.",
   portrait: '/rudy-portrait.jpg',
 }
 
@@ -338,7 +338,7 @@ export type CareerEntry = {
   links?: ThreadLink[]
 }
 
-/** Reverse-chronological career. First two entries render prominently as
+/** Reverse-chronological career. Current entries render prominently as
  *  current work; subsequent entries render as a compact "Previously" list. */
 export const CAREER_CURRENT: CareerEntry[] = [
   {
@@ -349,17 +349,18 @@ export const CAREER_CURRENT: CareerEntry[] = [
       'Taking product ownership of a new build for YouTube creators. Shipping in public.',
     links: [{ label: 'stan.store', url: 'https://stan.store' }],
   },
+
+]
+
+export const CAREER_PREVIOUS: CareerEntry[] = [
   {
     title: 'VantEdge',
     role: 'Co-Founder & CTO',
-    dateRange: '2025 → present',
+    dateRange: '2025',
     description:
       'The platform for building AI-native internal applications. UofT AI/ML spinout.',
     links: [{ label: 'vantedge.run', url: 'https://vantedge.run' }],
   },
-]
-
-export const CAREER_PREVIOUS: CareerEntry[] = [
   {
     title: 'Amazon Web Services',
     role: 'Software Engineer Intern',
@@ -389,7 +390,7 @@ export const CAREER_PREVIOUS: CareerEntry[] = [
 ]
 
 /** Retained for backwards compat if any external ref lingers. */
-export const COMPANY: FlagshipEntry = CAREER_CURRENT[1] as FlagshipEntry
+export const COMPANY: FlagshipEntry = CAREER_PREVIOUS[0] as FlagshipEntry
 
 /* ------------------------------------------------------------------ */
 /* NOTABLE SHIPS — past standouts (2 items, 2-col grid)               */
@@ -431,14 +432,14 @@ export const NOTABLE_SHIPS: Card[] = [
 /* ------------------------------------------------------------------ */
 
 export const NOW_STATEMENT =
-  "I like to make things. Currently: senior at Stan owning a new build for YouTube creators. Co-Founder & CTO at VantEdge shipping the platform for building AI-native internal applications. Recording Season 2 of Not A Minimum Viable Podcast — topically-focused conversations with operators I'd learn from anyway. Writing on Substack. Toronto."
+  "I like to make things. Currently: senior at Stan owning a new build for YouTube creators. Recording Season 2 of Not A Minimum Viable Podcast — topically-focused conversations with operators I'd learn from anyway. Toronto."
 
 /** Split forms of NOW_STATEMENT used by the Now section layout. The lead
  *  hangs off the left edge as a large Fraunces pull-quote; the body is the
  *  remaining paragraph that sits under the section header on the right. */
 export const NOW_LEAD = 'I like to make things.'
 export const NOW_BODY =
-  "Currently: senior at Stan owning a new build for YouTube creators. Co-Founder & CTO at VantEdge shipping the platform for building AI-native internal applications. Recording Season 2 of Not A Minimum Viable Podcast — topically-focused conversations with operators I'd learn from anyway. Writing on Substack. Toronto."
+  "Currently: senior at Stan owning a new build for YouTube creators. Recording Season 2 of Not A Minimum Viable Podcast — topically-focused conversations with operators I'd learn from anyway. Toronto."
 
 /* ------------------------------------------------------------------ */
 /* FOLLOW — LinkedIn foregrounded, everything else secondary          */
@@ -448,10 +449,6 @@ export const NOW_BODY =
 export const FOLLOW_LINKS: { label: string; href: string }[] = [
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/rudraksh-monga/' },
   {
-    label: 'Substack',
-    href: 'https://whyismynamerudy.substack.com/',
-  },
-  {
     label: 'Podcast',
     href: 'https://www.youtube.com/@NotAMinimumViablePodcast',
   },
@@ -459,6 +456,6 @@ export const FOLLOW_LINKS: { label: string; href: string }[] = [
 ]
 
 export const FOLLOW_INTRO =
-  'Following along is the easiest way to see what compounds. New episodes drop on the podcast, new notes go up on LinkedIn, and long-form writing lands on the Substack.'
+  'Following along is the easiest way to see what compounds. New episodes drop on the podcast, and updates go up on LinkedIn.'
 
 export const CONTACT_EMAIL = 'rudy@vantedge.run'

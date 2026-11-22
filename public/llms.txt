@@ -1,6 +1,6 @@
 # Rudy Monga
 
-> Senior full-stack engineer at Stan, Co-Founder & CTO of VantEdge, host of Not A Minimum Viable Podcast. Builder-first identity, working across creator-facing product, enterprise AI infrastructure, and podcast media. Based in Toronto.
+> Senior full-stack engineer at Stan, previously Co-Founder & CTO of VantEdge, host of Not A Minimum Viable Podcast. Builder-first identity, working across creator-facing product, enterprise AI infrastructure, and podcast media. Based in Toronto.
 
 Tagline: Building Things That Compound.
 
@@ -10,17 +10,17 @@ Full name: Rudraksh (Rudy) Monga. Also known as: whyismynamerudy.
 
 - [Personal site](https://whyismynamerudy.tech): The canonical identity site. Hero, career, podcast archive, notable ships, follow links.
 - [LinkedIn](https://www.linkedin.com/in/rudraksh-monga/): Professional profile, detailed work history, projects, recommendations.
-- [Substack](https://whyismynamerudy.substack.com/): Long-form writing on building, shipping, and operator lessons.
 - [GitHub](https://github.com/whyismynamerudy): Open-source projects, side builds, personal repositories.
 - [Not A Minimum Viable Podcast on YouTube](https://www.youtube.com/@NotAMinimumViablePodcast): Podcast episode archive.
 
 ## Current work
 
 - Stan (Aug 2026 → present): Senior Full-Stack Software Engineer. Taking product ownership of a new build for YouTube creators. Building in public.
-- VantEdge (2025 → present): Co-Founder & CTO. The platform for building AI-native internal applications. University of Toronto AI/ML spinout.
 - Not A Minimum Viable Podcast (2025 → present): Host and producer. 18 episodes as of August 2026, Season 2 in progress. Topic-focused conversations with post-PMF operators about how tech companies actually get built, scaled, and sold.
 
 ## Past work
+
+- VantEdge (2025): Co-Founder & CTO. The platform for building AI-native internal applications. University of Toronto AI/ML spinout.
 
 - Amazon Web Services (May–Aug 2025): Software Engineer Intern, anomaly detection.
 - Intact Insurance (2023–2024): Infrastructure Operations. Delivered 150% parallel build capacity and 97% release cycle acceleration.
@@ -68,9 +68,9 @@ Full name: Rudraksh (Rudy) Monga. Also known as: whyismynamerudy.
 ## Contact
 
 - Primary email: rudy@vantedge.run
-- Best surfaces for inbound: LinkedIn direct message, Substack replies, podcast guest inquiries via the show's YouTube channel.
+- Best surfaces for inbound: LinkedIn direct message, podcast guest inquiries via the show's YouTube channel.
 
 ## Optional
 
 - Site source available at [github.com/whyismynamerudy](https://github.com/whyismynamerudy).
-- Personal site tech: Next.js 15 + React 19 + Tailwind CSS + Fraunces typography.
+- Personal site tech: Next.js 15 + React 19, with minimal CSS and system typography.

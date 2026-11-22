@@ -1,219 +1,85 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
-@custom-variant dark (&:is(.dark *));
-
-/*
-  Tailwind v4 defaults borders to currentColor. Keep the v3-style neutral border
-  as a compatibility default so nothing renders with unexpected colored borders.
-*/
-@layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--archive-border, currentColor);
-  }
-}
 
 :root {
-  /* Sugar-high (blog syntax highlight) */
-  --sh-class: #7aa2f7;
-  --sh-sign: #89ddff;
-  --sh-string: #9ece6a;
-  --sh-keyword: #bb9af7;
-  --sh-comment: #565f89;
-  --sh-jsxliterals: #7aa2f7;
-  --sh-property: #73daca;
-  --sh-entity: #e0af68;
-
-  /* Warm editorial palette — light mode */
-  --archive-bg: #faf8f3;
-  --archive-text: #1f1b16;
-  --archive-muted: #6b5e4e;
-  --archive-border: #e8e1d3;
-  --archive-hover: #f2eddf;
+  color-scheme: light;
+  --archive-bg: #fff;
+  --archive-text: #222;
+  --archive-muted: #626262;
+  --archive-border: #ddd;
+  --archive-hover: #f5f5f5;
+  --sh-class: #0550ae;
+  --sh-sign: #555;
+  --sh-string: #116329;
+  --sh-keyword: #8250df;
+  --sh-comment: #626262;
+  --sh-jsxliterals: #0550ae;
+  --sh-property: #953800;
+  --sh-entity: #953800;
+}
+body { margin: 0; background: #fff; color: #222; font-family: Georgia, 'Times New Roman', serif; font-size: 17px; line-height: 1.65; }
+.site-shell { max-width: 680px; margin: 0 auto; padding: 0 24px; }
+.site-header { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; padding: 32px 0 24px; border-bottom: 1px solid #ddd; }
+.site-header, .site-footer, .meta, summary { font-family: 'Courier New', monospace; font-size: 14px; }
+nav, .inline-links { display: flex; flex-wrap: wrap; gap: 16px; }
+a { color: #0000b8; text-decoration: underline; text-underline-offset: 3px; }
+a:visited { color: #551a8b; }
+a:hover { color: #111; }
+a:focus-visible, summary:focus-visible { outline: 2px solid #0000b8; outline-offset: 4px; }
+h1, h2, h3 { font-family: inherit; font-weight: 700; line-height: 1.3; }
+h1 { margin: 0 0 22px; font-size: 34px; letter-spacing: -1px; }
+h2 { margin: 0 0 20px; font-size: 23px; }
+h3 { margin: 0 0 6px; font-size: 17px; }
+p { margin: 0 0 16px; }
+section { margin: 44px 0; scroll-margin-top: 24px; }
+.intro { margin-top: 48px; }
+.entry { margin-bottom: 24px; }
+.entry p, .plain-list p { margin: 4px 0; }
+.quiet { font-weight: 400; }
+.meta { display: block; color: #626262; }
+ul { padding-left: 23px; margin: 14px 0; }
+li { padding-left: 2px; margin-bottom: 8px; }
+.plain-list { list-style: none; padding: 0; }
+.plain-list li { margin-bottom: 22px; padding: 0; }
+details { margin-top: 18px; }
+summary { cursor: pointer; width: fit-content; text-decoration: underline; text-underline-offset: 3px; }
+details[open] summary { margin-bottom: 20px; }
+.site-footer { border-top: 1px solid #ddd; margin-top: 52px; padding: 22px 0 32px; color: #626262; }
+.document { margin: 48px 0; }
+.document h1 { margin-top: 24px; }
+.document h2 { margin-top: 32px; }
+.document img { max-width: 100%; height: auto; }
+.document pre { overflow-x: auto; padding: 16px; background: #f5f5f5; font-size: 14px; }
+.document blockquote { border-left: 2px solid #ddd; margin: 24px 0; padding-left: 20px; }
+@media (max-width: 480px) {
+  .site-shell { padding: 0 20px; }
+  .site-header { padding-top: 24px; gap: 12px; }
+  nav { gap: 12px; }
+  h1 { font-size: 30px; }
+  .intro { margin-top: 36px; }
 }
 
-.dark {
-  --archive-bg: #1c1815;
-  --archive-text: #f5efe3;
-  --archive-muted: #948474;
-  --archive-border: #2e2822;
-  --archive-hover: #26221d;
-}
-
-@theme inline {
-  --font-fraunces: var(--font-fraunces);
-  --font-geist: var(--font-geist);
-  --font-geist-mono: var(--font-geist-mono);
-
-  --color-archive-bg: var(--archive-bg);
-  --color-archive-text: var(--archive-text);
-  --color-archive-muted: var(--archive-muted);
-  --color-archive-border: var(--archive-border);
-  --color-archive-hover: var(--archive-hover);
-}
-
-@layer base {
-  html {
-    font-feature-settings: 'kern', 'liga', 'calt', 'ss01';
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  body.archive-body {
-    /* One-line font toggle. Swap to var(--font-instrument-serif) to try Instrument Serif. */
-    --font-display: var(--font-fraunces);
-
-    background-color: var(--archive-bg);
-    color: var(--archive-text);
-    font-family: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1.65;
-    transition: background-color 200ms ease, color 200ms ease;
-  }
-
-  ::selection {
-    background-color: var(--archive-hover);
-    color: var(--archive-text);
-  }
-}
-
-/* Utilities specific to the archive layout. */
-@layer utilities {
-  .font-fraunces {
-    font-family: var(--font-display), 'Georgia', 'Times New Roman', serif;
-    font-optical-sizing: auto;
-  }
-
-  .font-geist {
-    font-family: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
-  }
-
-  .font-geist-mono {
-    font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo,
-      monospace;
-  }
-
-  /* Meta line — dates, categories, entry ids */
-  .meta-line {
-    font-family: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--archive-muted);
-  }
-
-  /* Hero H1 — massive on desktop, fluid down. Fraunces opsz shines here. */
-  .hero-h1 {
-    font-family: var(--font-display), 'Georgia', serif;
-    font-optical-sizing: auto;
-    font-variation-settings: 'opsz' 144;
-    font-size: clamp(3rem, 8vw, 5.5rem);
-    font-weight: 500;
-    letter-spacing: -0.02em;
-    line-height: 1.02;
-    color: var(--archive-text);
-  }
-
-  /* Section headers (Fraunces ~40px desktop) */
-  .section-h {
-    font-family: var(--font-display), 'Georgia', serif;
-    font-optical-sizing: auto;
-    font-variation-settings: 'opsz' 72;
-    font-size: clamp(1.75rem, 3vw, 2.5rem);
-    font-weight: 500;
-    letter-spacing: -0.015em;
-    line-height: 1.15;
-    color: var(--archive-text);
-  }
-
-  /* Body reading — Fraunces has warmth for prose */
-  .prose-body {
-    font-family: var(--font-display), 'Georgia', serif;
-    font-optical-sizing: auto;
-    font-size: 1rem;
-    line-height: 1.65;
-    font-weight: 400;
-    color: var(--archive-text);
-  }
-
-  /* Big stat numeral */
-  .stat-number {
-    font-family: var(--font-display), 'Georgia', serif;
-    font-optical-sizing: auto;
-    font-variation-settings: 'opsz' 96;
-    font-size: clamp(2rem, 4.2vw, 3rem);
-    font-weight: 500;
-    letter-spacing: -0.02em;
-    line-height: 1;
-    color: var(--archive-text);
-  }
-
-  /* Thread number — chapter marker glyph */
-  .thread-number {
-    font-family: var(--font-display), 'Georgia', serif;
-    font-optical-sizing: auto;
-    font-variation-settings: 'opsz' 96;
-    font-size: clamp(2.5rem, 5vw, 3.5rem);
-    font-weight: 400;
-    line-height: 1;
-    letter-spacing: -0.01em;
-    color: var(--archive-muted);
-  }
-
-  /* Thread title — a step down from section-h to sit inline with a big number */
-  .thread-title {
-    font-family: var(--font-display), 'Georgia', serif;
-    font-optical-sizing: auto;
-    font-variation-settings: 'opsz' 72;
-    font-size: clamp(1.5rem, 2.6vw, 2.125rem);
-    font-weight: 500;
-    letter-spacing: -0.015em;
-    line-height: 1.15;
-    color: var(--archive-text);
-  }
-
-  /* Horizontal shelf: edge fade masks that dynamically retract when the
-     shelf is at the start or end. CSS variables set via inline style from
-     the component. Default (no vars set) matches the mid-scroll behavior
-     so it degrades gracefully. */
-  .shelf-fade {
-    -webkit-mask-image: linear-gradient(
-      to right,
-      transparent 0,
-      #000 var(--shelf-fade-left, 60px),
-      #000 calc(100% - var(--shelf-fade-right, 60px)),
-      transparent 100%
-    );
-    mask-image: linear-gradient(
-      to right,
-      transparent 0,
-      #000 var(--shelf-fade-left, 60px),
-      #000 calc(100% - var(--shelf-fade-right, 60px)),
-      transparent 100%
-    );
-    -webkit-mask-size: 100% 100%;
-    mask-size: 100% 100%;
-  }
-
-  /* Horizontal snap track. Native scroll + snap for reliability. */
-  .shelf-track {
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    overscroll-behavior-x: contain;
-  }
-
-  .shelf-track::-webkit-scrollbar {
-    display: none;
-  }
-
-  .shelf-snap {
-    scroll-snap-align: start;
-  }
+/* A quiet, minimal layout. */
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 17px; line-height: 1.7; color: #303030; }
+.site-shell { max-width: 688px; }
+.site-header { justify-content: flex-start; align-items: baseline; gap: 32px; padding: 64px 0 0; border: 0; }
+.site-header, .site-footer, .meta, summary { font-family: inherit; }
+.site-name { font-weight: 650; }
+nav { gap: 22px; }
+a, a:visited { color: inherit; text-decoration: none; }
+a:hover { color: #a14c30; text-decoration: underline; }
+a:focus-visible, summary:focus-visible { outline-color: #a14c30; }
+p a, .text-link { text-decoration: underline; text-decoration-color: #bdbdbd; text-underline-offset: 4px; }
+nav a, nav a:visited, .meta, .section-label { color: #737373; }
+h1 { font-size: 30px; letter-spacing: -0.7px; font-weight: 600; }
+h2 { font-size: 23px; letter-spacing: -0.4px; font-weight: 600; }
+.home-intro { margin: 54px 0 42px; }
+.home-intro p { color: #626262; }
+.home section:not(.home-intro) { border-top: 1px solid #e9e9e9; padding-top: 28px; margin: 32px 0; }
+.section-label { font-size: 14px; font-weight: 400; letter-spacing: 0; margin-bottom: 18px; }
+.elsewhere p { font-size: 16px; }
+.site-footer { border-color: #e9e9e9; font-size: 13px; margin-top: 42px; padding-bottom: 48px; }
+@media (max-width: 480px) {
+  .site-header { padding-top: 36px; gap: 28px; }
+  .home-intro { margin-top: 40px; }
 }
